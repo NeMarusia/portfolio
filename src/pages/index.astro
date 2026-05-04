@@ -1,0 +1,766 @@
+---
+const projects = [
+  {
+    title: 'Raven Task Board',
+    type: 'личная task-система',
+    stack: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'Obsidian', 'Syncthing'],
+    text: 'Мини-сайт для личной операционки: канбан по направлениям, матрица срочно/важно, архив закрытых задач, синхронизация с Obsidian и маленький ворон-наблюдатель.',
+    link: 'https://github.com/NeMarusia/raven-task-board',
+    accent: 'raven',
+  },
+  {
+    title: 'Prof Navigator AI',
+    type: 'AI-профориентация',
+    stack: ['Python', 'Flask', 'Celery', 'Redis', 'SQLite', 'Docker'],
+    text: 'Сайт для детского конкурса: профориентационная анкета, генерация AI-результатов через Gen API, фоновые задачи через Celery и хранение результатов.',
+    link: null,
+    accent: 'career',
+  },
+  {
+    title: 'AfterDeathAgency',
+    type: 'игра',
+    stack: ['Godot', 'GDScript', 'GameDev'],
+    text: 'Небольшая атмосферная игра про агентство после смерти: сцены, персонажи, звуки и интерактивная логика на Godot.',
+    link: 'https://github.com/NeMarusia/AfterDeathAgency',
+    accent: 'ghost',
+  },
+  {
+    title: 'mshp_event_bot',
+    type: 'Telegram-бот',
+    stack: ['Python', 'Aiogram', 'Google Sheets', 'Docker'],
+    text: 'Event-бот, поднятый для маркетинговых мероприятий МШП: регистрация, анкеты, согласия, запись данных и сервисная логика вокруг участников.',
+    link: 'https://github.com/vorobeysidr-gif/mshp_event_bot',
+    accent: 'bot',
+  },
+  {
+    title: 'LessonBuddyBot',
+    type: 'бот для замен',
+    stack: ['Python', 'Telegram Bot API', 'SQLite'],
+    text: 'Инструмент для заявок на замены преподавателей: сбор данных, статусы и уведомления куратору.',
+    link: 'https://github.com/NeMarusia/LessonBuddyBot',
+    accent: 'lesson',
+  },
+  {
+    title: 'Arduino Distance Blynk',
+    type: 'IoT-прототип',
+    stack: ['Arduino', 'Python', 'HC-SR04', 'Blynk'],
+    text: 'Сенсор расстояния на Arduino, который отправляет данные в Blynk Cloud через Python-мост.',
+    link: 'https://github.com/NeMarusia/arduino-distance-blynk',
+    accent: 'iot',
+  },
+  {
+    title: 'TaskTraker',
+    type: 'desktop-приложение',
+    stack: ['Python', 'Tkinter', 'SQLite'],
+    text: 'Локальный таск-трекер с дедлайнами, приоритетами, хранением задач и переключением языка интерфейса.',
+    link: 'https://github.com/NeMarusia/TaskTraker',
+    accent: 'desktop',
+  },
+];
+
+const skills = [
+  ['Marketing / Growth', 'партнёрский маркетинг, карты и отзовики, мерч, рекламные кабинеты, ЦА школьного EdTech'],
+  ['Project / EdTech', 'запуск образовательных потоков, учебная логистика, регламенты, Bitrix24, LMS, работа с метриками'],
+  ['Operations', 'документооборот, шаблоны, стандарты, бюджетирование, ФОТ, контроль сроков и ресурсов'],
+  ['Events', 'мастер-классы, мероприятия на 1000+ участников, выездные интенсивы, онлайн-ивенты, логистика'],
+  ['Communications', 'родители, ученики, преподаватели, подрядчики, партнёры, рассылки, презентации, публичные выступления'],
+  ['Analytics / UX', 'Яндекс.Метрика, Вебвизор, обратная связь, отчёты, Google Sheets, поиск болей пользователей и улучшение процессов'],
+  ['Python', 'Telegram-боты, SQLite, автоматизация, работа с API'],
+  ['GameDev', 'Godot, GDScript, сцены, UI, звуки и игровые прототипы'],
+  ['IoT', 'Arduino, датчики, Serial, Blynk Cloud'],
+  ['Web', 'HTML, CSS, Astro — этот сайт тоже часть практики'],
+  ['Tools', 'Git, GitHub, Docker basics, Canva, Google Workspace, Microsoft Office, домашний сервер'],
+];
+
+const highlights = [
+  ['1000+', 'участников крупных мероприятий'],
+  ['300+', 'участников образовательных процессов'],
+  ['100+', 'организаций в партнёрской базе контактов'],
+  ['+29%', 'рост набора после внеучебных мероприятий'],
+  ['+13%', 'эффективность отделения после регламентов и автоматизации'],
+  ['60+', 'подопечных проекта “Волонтёрские уроки”'],
+];
+
+const education = [
+  {
+    degree: 'Бакалавриат · Педагогическое образование с двумя профилями',
+    place: 'Московский городской педагогический университет',
+    period: '2020 — 2024',
+    details: 'Два профиля подготовки: информатика и технология. База для EdTech, образовательных проектов, методических материалов и технических прототипов.',
+  },
+  {
+    degree: 'Магистратура · Педагогическое образование',
+    place: 'Московский городской педагогический университет',
+    period: '2024 — июнь 2026',
+    details: 'Профиль: «Интернет вещей в образовании». Фокус на умных технологиях, образовательных продуктах и применении цифровых инструментов в обучении.',
+  },
+  {
+    degree: 'Повышение квалификации · Agile',
+    place: 'Открытое образование',
+    period: '2025',
+    details: 'Гибкая методология, project management / Scrum-подходы для управления задачами, командами и изменениями.',
+  },
+];
+
+const experience = [
+  {
+    role: 'Менеджер маркетинговых проектов',
+    company: 'Московская школа программистов · отдел маркетинга',
+    period: 'август 2025 — настоящее время',
+    points: [
+      'организация маркетинговых мероприятий и мастер-классов с командой, включая события на 1000+ участников',
+      'партнёрский маркетинг: поиск и коммуникация с организациями, база 100+ контактов, коллаборации с внешними площадками',
+      'операционный контур мастер-классов: подрядчики, дизайнеры, ТЗ, материалы, логистика и контроль готовности',
+      'размещение и актуализация отделений на картах, в справочниках и отзовиках; работа с рекламными кабинетами',
+      'заказ и учёт мерча; сбор внутренней системы учёта на Google-инструментах',
+      'мониторинг Яндекс.Метрики и Вебвизора, понимание аудитории школьного EdTech и точек улучшения пользовательского пути',
+      'разработка и запуск event-бота для мероприятий: регистрация, данные участников и автоматизация рутины команды',
+    ],
+  },
+  {
+    role: 'Куратор Олимпиадного отделения',
+    company: 'Московская школа программистов',
+    period: 'сентябрь 2022 — июнь 2025',
+    points: [
+      'масштабирование образовательных программ и логистика для 300+ участников: потоки, расписание, ресурсы',
+      'регламенты, стандарты, шаблоны документации и автоматизация процессов через Bitrix24/LMS',
+      'координация команды: постановка задач, контроль сроков, онбординг, наставничество и работа с подрядчиками',
+      'аналитика успеваемости, вовлечённости и эффективности программ; презентации и отчёты для руководства',
+      'выездные интенсивы, онлайн-мероприятия, сопровождение поездок и маркетинговые ивенты',
+      'участие в планировании бюджета, расчётах ФОТ и согласовании оплат',
+      'улучшение процессов через обратную связь, чат-боты, рассылки и сопровождение участников в LMS',
+    ],
+  },
+  {
+    role: 'Руководитель “Доноры МГПУ” / менеджер Волонтёрского центра',
+    company: 'МГПУ',
+    period: '2020 — 2024',
+    points: [
+      'руководство студенческой организацией и координация волонтёров: онбординг, обучение, сопровождение',
+      '20+ просветительских мероприятий и донорских акций с охватом 500+ человек',
+      'рост вовлечённости аудитории на 15% через образовательные инициативы',
+      'основатель проекта “Волонтёрские уроки”: база материалов по 12 предметам и помощь 60+ детям из ЦССВ и семей',
+      'партнёрские коммуникации, пост-релизы, соцсети, отчёты и итоговые презентации',
+    ],
+  },
+];
+---
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Портфолио Маргариты Сидоренко: EdTech, маркетинг, Python, Telegram-боты, Godot, IoT и проекты, которые реально работают."
+    />
+    <title>Маргарита Сидоренко — портфолио</title>
+  </head>
+  <body>
+    <div class="noise"></div>
+    <header class="site-header">
+      <a class="logo" href="#top" aria-label="На главную">M<span>.</span></a>
+      <nav aria-label="Основная навигация">
+        <a href="#projects">Проекты</a>
+        <a href="#experience">Опыт</a>
+        <a href="#education">Образование</a>
+        <a href="#skills">Навыки</a>
+        <a href="#about">Обо мне</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <div class="hero-copy">
+          <p class="eyebrow">EdTech • marketing • Python • events • automation</p>
+          <h1>Привет, я Маргарита. Делаю образовательные проекты, маркетинговые запуски, ботов и автоматизацию, которая не просто лежит мёртвым кодом.</h1>
+          <p class="lead">
+            Я работаю на стыке EdTech, маркетинга, управления и технологий: запускаю учебные процессы, собираю Telegram-ботов,
+            организую мероприятия, веду партнёрства и люблю проекты, где быстро видно пользу — для команды, учеников или пользователей.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">Смотреть проекты</a>
+            <a class="button" href="https://github.com/NeMarusia">GitHub</a>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Краткая карточка">
+          <div class="portrait-row">
+            <img class="portrait" src="/images/marsi-portrait.jpg" alt="Портрет Маргариты Сидоренко" />
+            <p class="card-label">Сейчас в фокусе</p>
+          </div>
+          <h2>Портфолио, которое выглядит живым</h2>
+          <p>
+            Не шаблон «junior developer #48293», а витрина на стыке project management, EdTech, маркетинга, event management и разработки:
+            с проектами, цифрами и характером.
+          </p>
+        </aside>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="section-heading">
+          <p class="eyebrow">Featured work</p>
+          <h2>Проекты</h2>
+          <p>Первые карточки — MVP. Дальше сюда стоит добавить скриншоты, демо и короткие истории «что было сложно».</p>
+        </div>
+        <div class="projects-grid">
+          {projects.map((project) => (
+            <article class={`project-card ${project.accent}`}>
+              <div>
+                <p class="project-type">{project.type}</p>
+                <h3>{project.title}</h3>
+                <p>{project.text}</p>
+              </div>
+              <ul class="tags" aria-label={`Стек проекта ${project.title}`}>
+                {project.stack.map((item) => <li>{item}</li>)}
+              </ul>
+              {project.link ? (
+                <a class="project-link" href={project.link}>Открыть репозиторий →</a>
+              ) : (
+                <span class="project-link muted-link">Репозиторий пока приватный</span>
+              )}
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section highlights" aria-label="Ключевые цифры">
+        {highlights.map(([value, label]) => (
+          <article class="highlight-card">
+            <strong>{value}</strong>
+            <span>{label}</span>
+          </article>
+        ))}
+      </section>
+
+      <section class="section" id="experience">
+        <div class="section-heading">
+          <p class="eyebrow">Experience</p>
+          <h2>Опыт</h2>
+          <p>Здесь не только код: управление образовательными программами, люди, процессы, мероприятия и автоматизация рутины.</p>
+        </div>
+        <div class="experience-list">
+          {experience.map((item) => (
+            <article class="experience-card">
+              <div class="experience-meta">
+                <p class="project-type">{item.period}</p>
+                <h3>{item.role}</h3>
+                <p>{item.company}</p>
+              </div>
+              <ul>
+                {item.points.map((point) => <li>{point}</li>)}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section" id="education">
+        <div class="section-heading">
+          <p class="eyebrow">Education</p>
+          <h2>Образование</h2>
+          <p>Педагогика, информатика, технологии и IoT — та самая база, из которой выросла связка EdTech + automation.</p>
+        </div>
+        <div class="education-grid">
+          {education.map((item) => (
+            <article class="education-card">
+              <p class="project-type">{item.period}</p>
+              <h3>{item.degree}</h3>
+              <p class="education-place">{item.place}</p>
+              <p>{item.details}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section split" id="skills">
+        <div class="section-heading sticky-ish">
+          <p class="eyebrow">Toolbox</p>
+          <h2>Навыки</h2>
+          <p>Не «знаю всё на свете», а карта сильных зон: от образовательных процессов и мероприятий до Python-ботов и домашних серверов.</p>
+        </div>
+        <div class="skills-list">
+          {skills.map(([name, description]) => (
+            <article class="skill-item">
+              <h3>{name}</h3>
+              <p>{description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="section about" id="about">
+        <div>
+          <p class="eyebrow">About</p>
+          <h2>Обо мне</h2>
+        </div>
+        <p>
+          Я люблю проекты, где быстро видно результат: учебный процесс становится прозрачнее, бот отвечает, датчик присылает данные,
+          игра запускается, интерфейс помогает не забыть задачу. В коде мне важны не только технологии, но и понятная польза.
+        </p>
+        <p>
+          У меня есть опыт в EdTech-процессах и маркетинге: учебная логистика на 300+ участников, мероприятия на 1000+ человек,
+          партнёрская база 100+ организаций, регламенты, Bitrix24/LMS, Яндекс.Метрика, командная координация, подрядчики,
+          бюджетирование и коммуникации со стейкхолдерами. Сейчас собираю это в портфолио вместе с Python, Telegram-ботами, Godot, IoT и домашним сервером.
+        </p>
+      </section>
+
+      <section class="section contacts" id="contacts">
+        <p class="eyebrow">Contacts</p>
+        <h2>Связаться</h2>
+        <div class="contact-links">
+          <a href="https://github.com/NeMarusia">GitHub: NeMarusia</a>
+          <a href="https://github.com/vorobeysidr-gif">GitHub: vorobeysidr-gif</a>
+          <a href="https://t.me/SidorenkoMN">Telegram</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 Маргарита Сидоренко. Собрано на Astro и домашнем серверном упрямстве.</p>
+    </footer>
+  </body>
+</html>
+
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #090914;
+    --bg-soft: #111125;
+    --card: rgba(255, 255, 255, 0.075);
+    --card-strong: rgba(255, 255, 255, 0.12);
+    --text: #f5f1ff;
+    --muted: #b7aecb;
+    --line: rgba(255, 255, 255, 0.13);
+    --violet: #a78bfa;
+    --cyan: #67e8f9;
+    --gold: #f7c873;
+    --pink: #fb7185;
+    --green: #86efac;
+    --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+    font-family:
+      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at top left, rgba(167, 139, 250, 0.32), transparent 32rem),
+      radial-gradient(circle at 80% 10%, rgba(103, 232, 249, 0.18), transparent 30rem),
+      radial-gradient(circle at 60% 80%, rgba(251, 113, 133, 0.12), transparent 34rem),
+      var(--bg);
+    color: var(--text);
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .noise {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    opacity: 0.23;
+    background-image:
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: 52px 52px;
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+  }
+
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 18px 0;
+    backdrop-filter: blur(14px);
+  }
+
+  .logo {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.055);
+    font-size: .86rem;
+    font-weight: 850;
+    box-shadow: none;
+  }
+
+  .logo span { color: var(--cyan); }
+
+  nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  nav a {
+    padding: 9px 12px;
+    border-radius: 999px;
+  }
+
+  nav a:hover { background: rgba(255,255,255,.08); color: var(--text); }
+
+  .section {
+    width: min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 88px 0;
+  }
+
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.55fr);
+    align-items: center;
+    gap: 34px;
+    min-height: calc(100vh - 82px);
+    padding-top: 42px;
+  }
+
+  .eyebrow {
+    margin: 0 0 14px;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.78rem;
+    font-weight: 800;
+  }
+
+  h1, h2, h3, p { margin-top: 0; }
+
+  h1 {
+    max-width: 760px;
+    margin-bottom: 22px;
+    font-size: clamp(2rem, 4.05vw, 3.45rem);
+    line-height: 1.08;
+    letter-spacing: -0.048em;
+  }
+
+  h2 {
+    margin-bottom: 18px;
+    font-size: clamp(2rem, 4vw, 3.3rem);
+    line-height: 1;
+    letter-spacing: -0.045em;
+  }
+
+  h3 { margin-bottom: 10px; font-size: 1.3rem; }
+
+  p { color: var(--muted); line-height: 1.7; }
+
+  .lead {
+    max-width: 700px;
+    font-size: 1.02rem;
+  }
+
+  .hero-actions, .contact-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .button, .contact-links a, .project-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 18px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255,255,255,.07);
+    color: var(--text);
+    font-weight: 750;
+  }
+
+  .button:hover, .contact-links a:hover, .project-link:hover {
+    transform: translateY(-1px);
+    border-color: rgba(255,255,255,.28);
+    background: rgba(255,255,255,.12);
+  }
+
+  .primary {
+    border-color: transparent;
+    background: linear-gradient(135deg, var(--violet), var(--cyan));
+    color: #070711;
+  }
+
+  .hero-card, .project-card, .experience-card, .education-card, .skill-item, .about, .contacts {
+    border: 1px solid var(--line);
+    border-radius: 28px;
+    background: linear-gradient(180deg, var(--card-strong), var(--card));
+    box-shadow: var(--shadow);
+  }
+
+  .hero-card {
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
+    max-width: 292px;
+    justify-self: end;
+  }
+
+  .hero-card h2 {
+    margin-bottom: 12px;
+    font-size: clamp(1.42rem, 2.1vw, 1.95rem);
+    line-height: 1.08;
+  }
+
+  .hero-card p {
+    font-size: .86rem;
+    line-height: 1.56;
+  }
+
+  .hero-card::before {
+    content: '';
+    position: absolute;
+    inset: -40% -20% auto auto;
+    width: 220px;
+    height: 220px;
+    border-radius: 999px;
+    background: rgba(167,139,250,.35);
+    filter: blur(12px);
+  }
+
+  .portrait-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .portrait {
+    flex: 0 0 auto;
+    width: 58px !important;
+    height: 58px !important;
+    max-width: 58px;
+    max-height: 58px;
+    border: 1px solid rgba(255,255,255,.22);
+    border-radius: 16px;
+    object-fit: cover;
+    object-position: center 34%;
+    box-shadow: 0 12px 28px rgba(0,0,0,.24);
+  }
+
+  .portrait-row .card-label {
+    margin: 0;
+  }
+
+  .card-label, .project-type { color: var(--gold); font-weight: 800; }
+
+  .section-heading {
+    max-width: 720px;
+    margin-bottom: 34px;
+  }
+
+  .highlights {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .highlight-card {
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: rgba(255,255,255,.07);
+    box-shadow: var(--shadow);
+  }
+
+  .highlight-card strong {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--cyan);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+  }
+
+  .highlight-card span {
+    color: var(--muted);
+    line-height: 1.45;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .project-card {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    min-height: 330px;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: -70px;
+    right: -80px;
+    width: 190px;
+    height: 190px;
+    border-radius: 999px;
+    background: var(--accent, rgba(167,139,250,.25));
+    filter: blur(6px);
+    opacity: 0.6;
+  }
+
+  .project-card > * { position: relative; }
+  .ghost { --accent: rgba(167,139,250,.38); }
+  .bot { --accent: rgba(103,232,249,.28); }
+  .lesson { --accent: rgba(247,200,115,.25); }
+  .iot { --accent: rgba(134,239,172,.25); }
+  .desktop { --accent: rgba(251,113,133,.22); }
+  .raven { --accent: rgba(167,139,250,.42); }
+  .career { --accent: rgba(52,211,153,.24); }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 22px 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .tags li {
+    padding: 7px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: #ddd7f0;
+    background: rgba(0,0,0,.18);
+    font-size: .85rem;
+    font-weight: 700;
+  }
+
+  .project-link {
+    width: fit-content;
+    color: var(--cyan);
+  }
+
+  .muted-link {
+    color: var(--muted);
+    font-weight: 800;
+  }
+
+  .experience-list {
+    display: grid;
+    gap: 18px;
+  }
+
+  .experience-card {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .experience-card ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .experience-card li + li { margin-top: 8px; }
+  .experience-meta p:last-child { margin-bottom: 0; }
+
+  .education-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .education-card {
+    position: relative;
+  }
+
+  .education-card:nth-child(1)::after {
+    content: "→";
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: var(--gold);
+  }
+
+  .education-card:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  .education-card {
+    padding: 24px;
+  }
+
+  .education-place {
+    color: var(--text);
+    font-weight: 750;
+  }
+
+  .split {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .sticky-ish { position: sticky; top: 96px; }
+
+  .skills-list {
+    display: grid;
+    gap: 14px;
+  }
+
+  .skill-item { padding: 22px; }
+  .skill-item h3 { color: var(--text); }
+  .skill-item p { margin-bottom: 0; }
+
+  .about, .contacts { padding: 32px; }
+  .about p { max-width: 850px; font-size: 1.08rem; }
+
+  footer {
+    width: min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 38px 0 54px;
+    border-top: 1px solid var(--line);
+  }
+
+  footer p { margin: 0; }
+
+  @media (max-width: 820px) {
+    .site-header { align-items: flex-start; }
+    nav { font-size: .86rem; }
+    .hero, .split, .projects-grid, .experience-card, .highlights, .education-grid { grid-template-columns: 1fr; }
+    .hero { min-height: auto; }
+    .sticky-ish { position: static; }
+    .section { padding: 58px 0; }
+    .project-card { min-height: 280px; }
+    .education-card:nth-child(1)::after { display: none; }
+    .education-card:nth-child(3) { grid-column: auto; }
+  }
+</style>
