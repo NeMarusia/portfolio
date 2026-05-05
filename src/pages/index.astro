@@ -6,7 +6,17 @@ const projects = [
     stack: ['HTML', 'CSS', 'JavaScript', 'Node.js', 'Obsidian', 'Syncthing'],
     text: 'Мини-сайт для личной операционки: канбан по направлениям, матрица срочно/важно, архив закрытых задач, синхронизация с Obsidian и маленький ворон-наблюдатель.',
     link: 'https://github.com/NeMarusia/raven-task-board',
+    demo: 'https://nemarusia.github.io/raven-task-board/',
     accent: 'raven',
+  },
+  {
+    title: 'Portfolio / resume site',
+    type: 'личный сайт',
+    stack: ['Astro', 'HTML', 'CSS', 'GitHub Actions', 'GitHub Pages'],
+    text: 'Живое портфолио-резюме: проекты, опыт, цифры, навыки и автодеплой через GitHub Actions на GitHub Pages.',
+    link: 'https://github.com/NeMarusia/portfolio',
+    demo: 'https://nemarusia.github.io/portfolio/',
+    accent: 'web',
   },
   {
     title: 'Prof Navigator AI',
@@ -29,7 +39,7 @@ const projects = [
     type: 'Telegram-бот',
     stack: ['Python', 'Aiogram', 'Google Sheets', 'Docker'],
     text: 'Event-бот, поднятый для маркетинговых мероприятий МШП: регистрация, анкеты, согласия, запись данных и сервисная логика вокруг участников.',
-    link: 'https://github.com/vorobeysidr-gif/mshp_event_bot',
+    link: null,
     accent: 'bot',
   },
   {
@@ -217,11 +227,14 @@ const experience = [
               <ul class="tags" aria-label={`Стек проекта ${project.title}`}>
                 {project.stack.map((item) => <li>{item}</li>)}
               </ul>
-              {project.link ? (
-                <a class="project-link" href={project.link}>Открыть репозиторий →</a>
-              ) : (
-                <span class="project-link muted-link">Репозиторий пока приватный</span>
-              )}
+              <div class="project-actions">
+                {project.demo && <a class="project-link" href={project.demo}>Открыть демо →</a>}
+                {project.link ? (
+                  <a class="project-link" href={project.link}>Открыть репозиторий →</a>
+                ) : (
+                  <span class="project-link muted-link">Репозиторий не прикреплён</span>
+                )}
+              </div>
             </article>
           ))}
         </div>
@@ -313,7 +326,6 @@ const experience = [
         <h2>Связаться</h2>
         <div class="contact-links">
           <a href="https://github.com/NeMarusia">GitHub: NeMarusia</a>
-          <a href="https://github.com/vorobeysidr-gif">GitHub: vorobeysidr-gif</a>
           <a href="https://t.me/SidorenkoMN">Telegram</a>
         </div>
       </section>
@@ -655,6 +667,13 @@ const experience = [
     background: rgba(0,0,0,.18);
     font-size: .85rem;
     font-weight: 700;
+  }
+
+  .project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: auto;
   }
 
   .project-link {
