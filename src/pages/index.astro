@@ -59,18 +59,41 @@ const projects = [
   },
 ];
 
-const skills = [
-  ['Marketing / Growth', 'партнёрский маркетинг, карты и отзовики, мерч, рекламные кабинеты, ЦА школьного EdTech'],
-  ['Project / EdTech', 'запуск образовательных потоков, учебная логистика, регламенты, Bitrix24, LMS, работа с метриками'],
-  ['Operations', 'документооборот, шаблоны, стандарты, бюджетирование, ФОТ, контроль сроков и ресурсов'],
-  ['Events', 'мастер-классы, мероприятия на 1000+ участников, выездные интенсивы, онлайн-ивенты, логистика'],
-  ['Communications', 'родители, ученики, преподаватели, подрядчики, партнёры, рассылки, презентации, публичные выступления'],
-  ['Analytics / UX', 'Яндекс.Метрика, Вебвизор, обратная связь, отчёты, Google Sheets, поиск болей пользователей и улучшение процессов'],
-  ['Python', 'Telegram-боты, SQLite, автоматизация, работа с API'],
-  ['GameDev', 'Godot, GDScript, сцены, UI, звуки и игровые прототипы'],
-  ['IoT', 'Arduino, датчики, Serial, Blynk Cloud'],
-  ['Web', 'HTML, CSS, Astro — этот сайт тоже часть практики'],
-  ['Tools', 'Git, GitHub, Docker basics, Canva, Google Workspace, Microsoft Office, домашний сервер'],
+const skillGroups = [
+  {
+    title: 'Project / Program Management в EdTech',
+    items: [
+      'запуск и сопровождение образовательных программ',
+      'декомпозиция задач, контроль сроков, регламенты и статусы',
+      'координация команд, подрядчиков, преподавателей и стейкхолдеров',
+      'Bitrix24, LMS, Google Workspace, отчёты и презентации для руководства',
+    ],
+  },
+  {
+    title: 'Operations & образовательная логистика',
+    items: [
+      'расписания, потоки, ресурсы, документы, шаблоны и стандарты',
+      'онбординг, сопровождение участников, коммуникации с родителями и учениками',
+      'мероприятия, интенсивы, мастер-классы, выездные и онлайн-форматы',
+      'бюджетирование, ФОТ, оплаты, контроль готовности и рисков',
+    ],
+  },
+  {
+    title: 'Analytics / Process Improvement',
+    items: [
+      'метрики образовательных процессов, обратная связь, поиск узких мест',
+      'Яндекс.Метрика, Вебвизор, Google Sheets, сводные таблицы',
+      'описание процессов, автоматизация рутины, улучшение пользовательского пути',
+    ],
+  },
+  {
+    title: 'Technical literacy & automation',
+    items: [
+      'Python, Telegram-боты, SQLite, API, базовая контейнеризация Docker',
+      'HTML/CSS/Astro, Git/GitHub, домашний сервер и деплой-процессы',
+      'IoT: Arduino, датчики, Serial, Blynk; Godot/GDScript как личная продуктовая практика',
+    ],
+  },
 ];
 
 const highlights = [
@@ -145,18 +168,22 @@ const experience = [
     ],
   },
 ];
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const portraitSrc = `${base}images/marsi-portrait.jpg`;
+const projectsHref = `${base}projects/`;
 ---
 
 <html lang="ru">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <link rel="icon" href={`${base}favicon.ico`} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta
       name="description"
-      content="Портфолио Маргариты Сидоренко: EdTech, маркетинг, Python, Telegram-боты, Godot, IoT и проекты, которые реально работают."
+      content="Портфолио Маргариты Сидоренко: project / program management в EdTech, образовательные процессы, операции, мероприятия, аналитика и автоматизация."
     />
     <title>Маргарита Сидоренко — портфолио</title>
   </head>
@@ -165,11 +192,11 @@ const experience = [
     <header class="site-header">
       <a class="logo" href="#top" aria-label="На главную">M<span>.</span></a>
       <nav aria-label="Основная навигация">
-        <a href="#projects">Проекты</a>
+        <a href="#about">Обо мне</a>
         <a href="#experience">Опыт</a>
         <a href="#education">Образование</a>
         <a href="#skills">Навыки</a>
-        <a href="#about">Обо мне</a>
+        <a href={projectsHref}>Проекты</a>
         <a href="#contacts">Контакты</a>
       </nav>
     </header>
@@ -177,57 +204,44 @@ const experience = [
     <main id="top">
       <section class="hero section">
         <div class="hero-copy">
-          <p class="eyebrow">EdTech • marketing • Python • events • automation</p>
-          <h1>Привет, я Маргарита. Делаю образовательные проекты, маркетинговые запуски, ботов и автоматизацию, которая не просто лежит мёртвым кодом.</h1>
+          <p class="eyebrow">EdTech project management • operations • образовательные продукты</p>
+          <h1>Привет, я Маргарита. Управляю образовательными проектами так, чтобы процессы не разваливались, люди понимали задачи, а результат был виден.</h1>
           <p class="lead">
-            Я работаю на стыке EdTech, маркетинга, управления и технологий: запускаю учебные процессы, собираю Telegram-ботов,
-            организую мероприятия, веду партнёрства и люблю проекты, где быстро видно пользу — для команды, учеников или пользователей.
+            Мой фокус — project / program management в образовании: запуск учебных процессов, координация команд, регламенты,
+            мероприятия, аналитика, коммуникации и аккуратная автоматизация рутины. Технологии для меня — не самоцель, а способ сделать систему понятнее и устойчивее.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="#projects">Смотреть проекты</a>
-            <a class="button" href="https://github.com/NeMarusia">GitHub</a>
+            <a class="button primary" href="#experience">Смотреть опыт</a>
+            <a class="button" href={projectsHref}>Проекты отдельно</a>
           </div>
         </div>
         <aside class="hero-card" aria-label="Краткая карточка">
           <div class="portrait-row">
-            <img class="portrait" src="/images/marsi-portrait.jpg" alt="Портрет Маргариты Сидоренко" />
+            <img class="portrait" src={portraitSrc} alt="Портрет Маргариты Сидоренко" loading="eager" />
             <p class="card-label">Сейчас в фокусе</p>
           </div>
-          <h2>Портфолио, которое выглядит живым</h2>
+          <h2>EdTech PM / Operations</h2>
           <p>
-            Не шаблон «junior developer #48293», а витрина на стыке project management, EdTech, маркетинга, event management и разработки:
-            с проектами, цифрами и характером.
+            Образовательные программы, мероприятия, команды, партнёры, документы, метрики и автоматизация — не россыпью, а в управляемую систему.
           </p>
         </aside>
       </section>
 
-      <section class="section" id="projects">
+      <section class="section about-block" id="about">
         <div class="section-heading">
-          <p class="eyebrow">Featured work</p>
-          <h2>Проекты</h2>
-          <p>Первые карточки — MVP. Дальше сюда стоит добавить скриншоты, демо и короткие истории «что было сложно».</p>
+          <p class="eyebrow">About</p>
+          <h2>Обо мне</h2>
         </div>
-        <div class="projects-grid">
-          {projects.map((project) => (
-            <article class={`project-card ${project.accent}`}>
-              <div>
-                <p class="project-type">{project.type}</p>
-                <h3>{project.title}</h3>
-                <p>{project.text}</p>
-              </div>
-              <ul class="tags" aria-label={`Стек проекта ${project.title}`}>
-                {project.stack.map((item) => <li>{item}</li>)}
-              </ul>
-              <div class="project-actions">
-                {project.demo && <a class="project-link" href={project.demo}>Открыть демо →</a>}
-                {project.link ? (
-                  <a class="project-link" href={project.link}>Открыть репозиторий →</a>
-                ) : (
-                  <span class="project-link muted-link">Репозиторий не прикреплён</span>
-                )}
-              </div>
-            </article>
-          ))}
+        <div class="about-copy">
+          <p>
+            Я люблю образовательные проекты, где быстро видно результат: расписание стало прозрачнее, команда понимает зоны ответственности,
+            участники не теряются в коммуникациях, а руководителю не нужно вытаскивать статус из хаоса вручную.
+          </p>
+          <p>
+            У меня есть опыт в EdTech-процессах и маркетинге: учебная логистика на 300+ участников, мероприятия на 1000+ человек,
+            партнёрская база 100+ организаций, регламенты, Bitrix24/LMS, Яндекс.Метрика, командная координация, подрядчики,
+            бюджетирование и коммуникации со стейкхолдерами. Технические проекты и автоматизация — мой способ не просто «красиво придумать», а довести идею до работающего инструмента.
+          </p>
         </div>
       </section>
 
@@ -244,7 +258,7 @@ const experience = [
         <div class="section-heading">
           <p class="eyebrow">Experience</p>
           <h2>Опыт</h2>
-          <p>Здесь не только код: управление образовательными программами, люди, процессы, мероприятия и автоматизация рутины.</p>
+          <p>Управление образовательными программами, люди, процессы, мероприятия, коммуникации и автоматизация рутины.</p>
         </div>
         <div class="experience-list">
           {experience.map((item) => (
@@ -284,40 +298,36 @@ const experience = [
         <div class="section-heading sticky-ish">
           <p class="eyebrow">Toolbox</p>
           <h2>Навыки</h2>
-          <p>Не «знаю всё на свете», а карта сильных зон: от образовательных процессов и мероприятий до Python-ботов и домашних серверов.</p>
+          <p>Сначала — то, что прямо ложится в project management в образовании. Техническая часть оставлена как плюс: понимаю, как устроены инструменты, и могу говорить с разработкой не на языке шаманских жестов.</p>
         </div>
-        <div class="skills-list">
-          {skills.map(([name, description]) => (
-            <article class="skill-item">
-              <h3>{name}</h3>
-              <p>{description}</p>
+        <div class="skills-list grouped-skills">
+          {skillGroups.map((group) => (
+            <article class="skill-item skill-group">
+              <h3>{group.title}</h3>
+              <ul>
+                {group.items.map((item) => <li>{item}</li>)}
+              </ul>
             </article>
           ))}
         </div>
       </section>
 
-      <section class="section about" id="about">
-        <div>
-          <p class="eyebrow">About</p>
-          <h2>Обо мне</h2>
+      <section class="section projects-teaser" id="projects">
+        <div class="section-heading">
+          <p class="eyebrow">Selected work</p>
+          <h2>Проекты — отдельно</h2>
+          <p>На главной оставила карьерную историю выше. Если хочется посмотреть руками: боты, task-board, IoT-прототипы, Godot и веб-проекты лежат на отдельной странице.</p>
         </div>
-        <p>
-          Я люблю проекты, где быстро видно результат: учебный процесс становится прозрачнее, бот отвечает, датчик присылает данные,
-          игра запускается, интерфейс помогает не забыть задачу. В коде мне важны не только технологии, но и понятная польза.
-        </p>
-        <p>
-          У меня есть опыт в EdTech-процессах и маркетинге: учебная логистика на 300+ участников, мероприятия на 1000+ человек,
-          партнёрская база 100+ организаций, регламенты, Bitrix24/LMS, Яндекс.Метрика, командная координация, подрядчики,
-          бюджетирование и коммуникации со стейкхолдерами. Сейчас собираю это в портфолио вместе с Python, Telegram-ботами, Godot, IoT и домашним сервером.
-        </p>
+        <a class="button primary" href={projectsHref}>Открыть страницу проектов</a>
       </section>
 
       <section class="section contacts" id="contacts">
         <p class="eyebrow">Contacts</p>
         <h2>Связаться</h2>
         <div class="contact-links">
-          <a href="https://github.com/NeMarusia">GitHub: NeMarusia</a>
+          <a href="mailto:sidorenko.margo.ru@yandex.ru">sidorenko.margo.ru@yandex.ru</a>
           <a href="https://t.me/SidorenkoMN">Telegram</a>
+          <a href="https://github.com/NeMarusia">GitHub: NeMarusia</a>
         </div>
       </section>
     </main>
@@ -504,7 +514,7 @@ const experience = [
     color: #070711;
   }
 
-  .hero-card, .project-card, .experience-card, .education-card, .skill-item, .about, .contacts {
+  .hero-card, .project-card, .experience-card, .education-card, .skill-item, .about-block, .projects-teaser, .contacts {
     border: 1px solid var(--line);
     border-radius: 28px;
     background: linear-gradient(180deg, var(--card-strong), var(--card));
@@ -750,8 +760,23 @@ const experience = [
   .skill-item h3 { color: var(--text); }
   .skill-item p { margin-bottom: 0; }
 
-  .about, .contacts { padding: 32px; }
-  .about p { max-width: 850px; font-size: 1.08rem; }
+  .about-block, .projects-teaser, .contacts { padding: 32px; }
+  .about-block {
+    display: grid;
+    grid-template-columns: 0.55fr 1.45fr;
+    gap: 30px;
+    align-items: start;
+  }
+  .about-block .section-heading { margin-bottom: 0; }
+  .about-copy p { max-width: 860px; font-size: 1.08rem; }
+  .grouped-skills { grid-template-columns: 1fr; }
+  .skill-group ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .skill-group li + li { margin-top: 8px; }
 
   footer {
     width: min(1120px, calc(100% - 32px));
@@ -765,7 +790,7 @@ const experience = [
   @media (max-width: 820px) {
     .site-header { align-items: flex-start; }
     nav { font-size: .86rem; }
-    .hero, .split, .projects-grid, .experience-card, .highlights, .education-grid { grid-template-columns: 1fr; }
+    .hero, .split, .projects-grid, .experience-card, .highlights, .education-grid, .about-block { grid-template-columns: 1fr; }
     .hero { min-height: auto; }
     .sticky-ish { position: static; }
     .section { padding: 58px 0; }
